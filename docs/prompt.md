@@ -1,0 +1,1 @@
+now take the file instructions and build a complete web app. follow the Azure guildlines and the state of art for creating web app and web services. inlcude all needed npm packages. us only the newest versions of the packages available.

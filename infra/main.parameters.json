@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "value": "aka-service"
+    },
+    "location": {
+      "value": "${AZURE_LOCATION}"
+    },
+    "environmentName": {
+      "value": "${AZURE_ENV_NAME}"
+    },
+    "repositoryUrl": {
+      "value": "https://github.com/AxelWol/aka-service"
+    },
+    "branch": {
+      "value": "main"
+    },
+    "repositoryToken": {
+      "value": "${GITHUB_TOKEN}"
+    },
+    "appLocation": {
+      "value": "/"
+    },
+    "apiLocation": {
+      "value": ""
+    },
+    "appArtifactLocation": {
+      "value": "build"
+    },
+    "enterpriseGradeCdnStatus": {
+      "value": "Enabled"
+    },
+    "skuName": {
+      "value": "Standard"
+    },
+    "skuTier": {
+      "value": "Standard"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+name: aka-service-4yaydbrduw6d4
+metadata:
+  template: staticwebapp@0.0.1-beta
+resourceGroup: rg-aka
+
+services:
+  web:
+    project: .
+    host: staticwebapp
+    language: js
