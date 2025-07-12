@@ -73,7 +73,7 @@ async function initializeApp(): Promise<void> {
     if (hideUI) {
       // Hide UI mode - suppress all output and perform redirect immediately
       // Override console methods to suppress all output
-      // eslint-disable-next-line no-console
+       
       const originalConsole = {
         // eslint-disable-next-line no-console
         log: console.log,
@@ -284,6 +284,12 @@ function handleDirectRedirectHidden(): void {
   } catch (error) {
     // In hidden mode, silently fail and show white screen
     // No error logging or UI in hidden mode
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    logger.error('Direct redirect failed', { 
+      error: message, 
+      path: currentPath, 
+      search: currentSearch
+    });
   }
 }
 
@@ -395,37 +401,12 @@ function setTestUrl(url: string): void {
   }
 }
 
-/**
- * Show web components demo
- */
-function showWebcDemo(): void {
-  const demoResultEl = document.getElementById('webc-demo-result');
-  if (demoResultEl) {
-    demoResultEl.innerHTML = `
-      <div class="result success">
-        <strong>🎉 KERN UX ANNEX Web Components Demo!</strong><br>
-        <p>The web components are working correctly. You can now use components like:</p>
-        <ul style="margin-top: 0.5rem;">
-          <li><code>&lt;webc-alert&gt;</code> - For alerts and notifications</li>
-          <li><code>&lt;webc-button&gt;</code> - For styled buttons</li>
-          <li><code>&lt;webc-badge&gt;</code> - For status badges</li>
-          <li><code>&lt;webc-card&gt;</code> - For content cards</li>
-          <li>And many more components from the library!</li>
-        </ul>
-      </div>
-    `;
-    
-    logger.info('Web components demo displayed successfully');
-  }
-}
-
 // Extend Window interface for global functions
 declare global {
   interface Window {
     testRedirect: () => void;
     clearResult: () => void;
     setTestUrl: (url: string) => void;
-    showWebcDemo: () => void;
   }
 }
 
@@ -433,7 +414,6 @@ declare global {
 window.testRedirect = testRedirect;
 window.clearResult = clearResult;
 window.setTestUrl = setTestUrl;
-window.showWebcDemo = showWebcDemo;
 
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeApp);
