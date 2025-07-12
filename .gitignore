@@ -36,6 +36,7 @@ bower_components
 
 # Compiled binary
 build
+build/*
 
 # Dependency directories
 node_modules/
