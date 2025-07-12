@@ -97,6 +97,8 @@ export class AKAService {
     configLoaded: boolean;
     configVersion?: string;
     groupCount?: number;
+    routingCount?: number;
+    configLastModified?: string;
     lastConfigLoad?: Date;
   } {
     const config = configurationService.getConfiguration();
@@ -105,6 +107,8 @@ export class AKAService {
       configLoaded: boolean;
       configVersion?: string;
       groupCount?: number;
+      routingCount?: number;
+      configLastModified?: string;
       lastConfigLoad?: Date;
     } = {
       initialized: this.isInitialized,
@@ -114,6 +118,10 @@ export class AKAService {
     if (config) {
       status.configVersion = config.version;
       status.groupCount = config.routingGroups.length;
+      status.routingCount = config.routingGroups.reduce((total, group) => total + group.routings.length, 0);
+      if (config.metadata?.lastModified) {
+        status.configLastModified = config.metadata.lastModified;
+      }
     }
 
     const lastLoad = configurationService.getLastLoaded();

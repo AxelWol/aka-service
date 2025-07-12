@@ -1,16 +1,16 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.2",
     "metadata": {
         "created": "2025-07-12T00:00:00.000Z",
-        "lastModified": "2025-07-12T00:00:00.000Z",
+        "lastModified": "2025-07-12T11:20:00.000Z",
         "author": "AKA Service Team"
     },
     "routingGroups": [
         {
             "name": "Eheschliessung",
-            "description": "Routing for Leika 99059001000000 - Anmeldung zur Eheschließung",
+            "description": "Routing for Leika 99059001104000 - Anmeldung zur Eheschließung",
             "dependsOnKey": "leika",
-            "dependsOnValue": "99059001000000",
+            "dependsOnValue": "99059001104000",
             "routings": [
                 {
                     "name": "1",
@@ -67,8 +67,8 @@
                 {
                     "name": "LeikaSpecific",
                     "dependsOnKey": "leika",
-                    "dependsOnValue": "99059001000000",
-                    "redirectTarget": "https://example.com/services/leika/99059001000000"
+                    "dependsOnValue": "99059001104000",
+                    "redirectTarget": "https://example.com/services/leika/99059001104000--AAA"
                 },
                 {
                     "name": "DefaultService",

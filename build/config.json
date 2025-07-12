@@ -1,54 +1,90 @@
 {
-  "version": "1.0.0",
-  "metadata": {
-    "created": "2025-07-12T00:00:00.000Z",
-    "lastModified": "2025-07-12T00:00:00.000Z",
-    "author": "AKA Service Team"
-  },
-  "routingGroups": [
-    {
-      "name": "Eheschliessung",
-      "description": "Routing for Leika 99059001000000 - Anmeldung zur Eheschließung",
-      "dependsOnKey": "leika",
-      "dependsOnValue": "99059001000000",
-      "routings": [
+    "version": "1.0.2",
+    "metadata": {
+        "created": "2025-07-12T00:00:00.000Z",
+        "lastModified": "2025-07-12T11:20:00.000Z",
+        "author": "AKA Service Team"
+    },
+    "routingGroups": [
         {
-          "name": "BzMitte",
-          "dependsOnKey": "oeid",
-          "dependsOnValue": "2289",
-          "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000001&mode=cc&cc_key=AnmeldungEheschliessung"
+            "name": "Eheschliessung",
+            "description": "Routing for Leika 99059001104000 - Anmeldung zur Eheschließung",
+            "dependsOnKey": "leika",
+            "dependsOnValue": "99059001104000",
+            "routings": [
+                {
+                    "name": "1",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2289",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000001&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "2",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "8455",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000002&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "3",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "16935",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000003&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "4",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2352",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000004&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "5",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2500",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000005&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "6",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "7997",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "7",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2373",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000007&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "Fallback",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000001&mode=cc&cc_key=AnmeldungEheschliessung"
+                }
+            ]
         },
         {
-          "name": "DefaultEheschliessung",
-          "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.DEFAULT&mode=cc&cc_key=AnmeldungEheschliessung"
-        }
-      ]
-    },
-    {
-      "name": "AllServices",
-      "description": "Generic routing for various services based on parameters",
-      "routings": [
-        {
-          "name": "LeikaSpecific",
-          "dependsOnKey": "leika",
-          "dependsOnValue": "99059001000000",
-          "redirectTarget": "https://example.com/services/leika/99059001000000"
+            "name": "AllServices",
+            "description": "Generic routing for various services based on parameters",
+            "routings": [
+                {
+                    "name": "LeikaSpecific",
+                    "dependsOnKey": "leika",
+                    "dependsOnValue": "99059001104000",
+                    "redirectTarget": "https://example.com/services/leika/99059001104000--AAA"
+                },
+                {
+                    "name": "DefaultService",
+                    "redirectTarget": "https://example.com/services/default"
+                }
+            ]
         },
         {
-          "name": "DefaultService",
-          "redirectTarget": "https://example.com/services/default"
+            "name": "SimpleRedirect",
+            "description": "Simple redirect without parameters",
+            "routings": [
+                {
+                    "name": "DirectRedirect",
+                    "redirectTarget": "https://example.com/simple"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "SimpleRedirect",
-      "description": "Simple redirect without parameters",
-      "routings": [
-        {
-          "name": "DirectRedirect",
-          "redirectTarget": "https://example.com/simple"
-        }
-      ]
-    }
-  ]
+    ]
 }
