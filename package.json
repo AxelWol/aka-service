@@ -1,6 +1,6 @@
 {
   "name": "aka-service",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "AKA-URL Shortener Service - A static web app for URL redirection",
   "type": "module",
   "scripts": {
