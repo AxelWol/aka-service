@@ -71,19 +71,28 @@
 
 
                 <div class="examples">
-                    <h4>Example URLs (click to test, hide=true hides this UI in PROD):</h4>
-                    <ul>
-                        <li onclick="setTestUrl('/Eheschliessung?leika=99059001104000&oeid=2289&hide=true')">
-                            /Eheschliessung?leika=99059001104000&oeid=2289&hide=true</li>
-                        <li onclick="setTestUrl('/Eheschliessung?leika=99059001104000&hide=true')">
-                            /Eheschliessung?leika=99059001104000&hide=true</li>
-                        <li onclick="setTestUrl('/AllServices?leika=99059001104000&oeid=2289&hide=true')">
-                            /AllServices?leika=99059001104000&oeid=2289&hide=true</li>
-                        <li onclick="setTestUrl('/SimpleRedirect?hide=true')">/SimpleRedirect?hide=true</li>
-                    </ul>
+                    <kern-heading level="3" size="small">Example URLs (click to test, hide=true hides this UI in
+                        PROD):</kern-heading>
+                    <br />
+                    <kern-list variant="simple" type="bullet" size="default">
+                        <kern-list-item
+                            onclick="setTestUrl('/Eheschliessung?leika=99059001104000&oeid=2289&hide=true')">
+                            /Eheschliessung?leika=99059001104000&oeid=2289&hide=true
+                        </kern-list-item>
+                        <kern-list-item onclick="setTestUrl('/Eheschliessung?leika=99059001104000&hide=true')">
+                            /Eheschliessung?leika=99059001104000&hide=true
+                        </kern-list-item>
+                        <kern-list-item onclick="setTestUrl('/AllServices?leika=99059001104000&oeid=2289&hide=true')">
+                            /AllServices?leika=99059001104000&oeid=2289&hide=true
+                        </kern-list-item>
+                        <kern-list-item onclick="setTestUrl('/SimpleRedirect?hide=true')">
+                            /SimpleRedirect?hide=true
+                        </kern-list-item>
+                    </kern-list>
                 </div>
 
                 <div id="test-result"></div>
+
             </kern-grid-col>
         </kern-grid-row>
 
@@ -94,7 +103,8 @@
             <kern-grid-col size="8" sm="12" md="12" lg="8">
 
                 <div class="footer">
-                    <p>AKA URL Shortener Service - ©2025 Programm digitalFirst - Senatskanzlei Hamburg.</p>
+                    <p>AKA URL Shortener Service. Build with KERN UX-Standard.</p>
+                    <p>© 2025 Programm digitalFirst - Senatskanzlei Hamburg.</p>
                     <p>Kontakt: <a href="mailto:axel.wolters@sk.hamburg.de">Axel Wolters - Themenbereich
                             Architektur.</a></p>
                     <p>Last Updated: <span id="last-updated">-</span></p>
