@@ -66,29 +66,56 @@ let testResultEl: HTMLElement | null = null;
  */
 async function initializeApp(): Promise<void> {
   try {
-    logger.info('Initializing AKA Service application');
-    
-    // Load web components first
-    await loadWebComponents();
-    
-    // Check if hide=true parameter is present
+    // Check if hide=true parameter is present first (before any logging or UI work)
     const urlParams = new URLSearchParams(window.location.search);
     const hideUI = urlParams.get('hide') === 'true';
     
     if (hideUI) {
-      // Hide UI mode - show only white screen and perform redirect
-      document.body.innerHTML = '<div style="background: white; width: 100vw; height: 100vh;"></div>';
-      document.body.style.background = 'white';
-      document.body.style.margin = '0';
-      document.body.style.padding = '0';
+      // Hide UI mode - suppress all output and perform redirect immediately
+      // Override console methods to suppress all output
+      // eslint-disable-next-line no-console
+      const originalConsole = {
+        // eslint-disable-next-line no-console
+        log: console.log,
+        // eslint-disable-next-line no-console
+        info: console.info,
+        // eslint-disable-next-line no-console
+        warn: console.warn,
+        // eslint-disable-next-line no-console
+        error: console.error
+      };
       
-      // Initialize service for redirect processing
-      await akaService.initialize('/config.json');
+      // Suppress all console output
+      // eslint-disable-next-line no-console
+      console.log = console.info = console.warn = console.error = () => {};
       
-      // Perform redirect immediately
-      handleDirectRedirectHidden();
+      try {
+        // Minimal white screen setup
+        document.body.innerHTML = '<div style="background: white; width: 100vw; height: 100vh;"></div>';
+        document.body.style.cssText = 'background: white; margin: 0; padding: 0; overflow: hidden;';
+        
+        // Initialize service for redirect processing (silently)
+        await akaService.initialize('/config.json');
+        
+        // Perform redirect immediately
+        handleDirectRedirectHidden();
+      } catch (error) {
+        // Restore console for critical errors only
+        Object.assign(console, originalConsole);
+        // eslint-disable-next-line no-console
+        console.error('Critical error in hidden mode:', error);
+        
+        // Show minimal white screen on error
+        document.body.innerHTML = '<div style="background: white; width: 100vw; height: 100vh;"></div>';
+      }
       return;
     }
+    
+    // Normal mode initialization
+    logger.info('Initializing AKA Service application');
+    
+    // Load web components first
+    await loadWebComponents();
     
     // Get DOM elements for normal UI mode
     serviceStatusEl = document.getElementById('service-status');
@@ -240,50 +267,23 @@ function handleDirectRedirectHidden(): void {
     const cleanSearch = urlParams.toString();
     const cleanUrl = currentPath + (cleanSearch ? '?' + cleanSearch : '');
     
-    logger.info('Processing hidden redirect request', { 
-      path: currentPath, 
-      search: cleanSearch 
-    });
-    
-    // For root path, try to redirect based on remaining parameters
+    // For root path, only redirect if there are other parameters
     if (currentPath === '/' || currentPath === '/index.html') {
       if (cleanSearch) {
         // If there are parameters, try to find a matching route
-        const redirectTarget = akaService.processRedirect('/' + cleanSearch);
-        logger.info('Redirecting from root with parameters', { 
-          sourceUrl: cleanUrl, 
-          targetUrl: redirectTarget 
-        });
+        const redirectTarget = akaService.processRedirect('/?' + cleanSearch);
         window.location.href = redirectTarget;
-      } else {
-        // No parameters, show white screen indefinitely
-        logger.info('No redirect target found for root path without parameters');
       }
-    } else {
-      // Process redirect for non-root paths
-      const redirectTarget = akaService.processRedirect(cleanUrl);
-      logger.info('Redirecting to target URL', { 
-        sourceUrl: cleanUrl, 
-        targetUrl: redirectTarget 
-      });
-      window.location.href = redirectTarget;
+      // If no parameters, stay on white screen (no redirect needed)
+      return;
     }
-  } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    logger.error('Hidden redirect failed', { 
-      error: message, 
-      path: currentPath, 
-      search: currentSearch 
-    });
     
-    // In hidden mode, just show white screen on error
-    // Optionally, redirect to a fallback URL after a delay
-    setTimeout(() => {
-      if (window.location.pathname === '/') {
-        // Stay on white screen for root errors
-        logger.info('Staying on white screen due to redirect error');
-      }
-    }, 1000);
+    // Process redirect for non-root paths
+    const redirectTarget = akaService.processRedirect(cleanUrl);
+    window.location.href = redirectTarget;
+  } catch (error) {
+    // In hidden mode, silently fail and show white screen
+    // No error logging or UI in hidden mode
   }
 }
 

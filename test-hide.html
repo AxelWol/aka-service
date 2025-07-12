@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide Parameter Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 2rem;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0.5rem;
+            font-weight: bold;
+        }
+        .test-link:hover {
+            background: #0056b3;
+        }
+        .explanation {
+            background: #e9ecef;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        .code {
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 3px;
+            font-family: monospace;
+            border-left: 3px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Hide Parameter Test</h1>
+        
+        <div class="explanation">
+            <h3>What does <code>hide=true</code> do?</h3>
+            <p>When <code>hide=true</code> is added to any URL, the AKA service should:</p>
+            <ul>
+                <li>✅ Suppress all console output and UI elements</li>
+                <li>✅ Show only a white screen</li>
+                <li>✅ Process redirects based on other URL parameters</li>
+                <li>✅ Redirect immediately without user interaction</li>
+            </ul>
+        </div>
+
+        <h3>🚀 Test Links</h3>
+        
+        <div class="explanation">
+            <h4>Test 1: Root with hide=true (should show white screen)</h4>
+            <div class="code">/?hide=true</div>
+            <a href="/?hide=true" class="test-link" target="_blank">Test Root + Hide</a>
+            <p><em>Expected: White screen with no console output</em></p>
+        </div>
+
+        <div class="explanation">
+            <h4>Test 2: Root with hide=true and redirect parameter</h4>
+            <div class="code">/?hide=true&redirect=example</div>
+            <a href="/?hide=true&redirect=example" class="test-link" target="_blank">Test Root + Hide + Redirect</a>
+            <p><em>Expected: Silent redirect to target URL (if configured)</em></p>
+        </div>
+
+        <div class="explanation">
+            <h4>Test 3: Path with hide=true</h4>
+            <div class="code">/test?hide=true</div>
+            <a href="/test?hide=true" class="test-link" target="_blank">Test Path + Hide</a>
+            <p><em>Expected: Silent redirect to target URL (if /test is configured)</em></p>
+        </div>
+
+        <div class="explanation">
+            <h4>Test 4: Path with hide=true and additional parameters</h4>
+            <div class="code">/docs?hide=true&version=latest</div>
+            <a href="/docs?hide=true&version=latest" class="test-link" target="_blank">Test Path + Hide + Params</a>
+            <p><em>Expected: Silent redirect including the version=latest parameter</em></p>
+        </div>
+
+        <h3>🔍 How to Test</h3>
+        <ol>
+            <li><strong>Open Browser DevTools</strong> (F12) before clicking test links</li>
+            <li><strong>Monitor Console</strong> - should be empty with hide=true</li>
+            <li><strong>Check Network Tab</strong> - should show minimal requests</li>
+            <li><strong>Observe Page</strong> - should show white screen or redirect immediately</li>
+        </ol>
+
+        <div class="explanation">
+            <h4>📝 Testing Checklist</h4>
+            <ul>
+                <li>❌ <strong>No console output</strong> (check DevTools Console)</li>
+                <li>❌ <strong>White screen only</strong> (no UI elements visible)</li>
+                <li>❌ <strong>Fast loading</strong> (no web component loading delays)</li>
+                <li>❌ <strong>Immediate redirect</strong> (for valid routes)</li>
+                <li>❌ <strong>Silent failures</strong> (no error pages)</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h4>🆚 Compare with Normal Mode</h4>
+            <a href="/" class="test-link">Normal Mode (No Hide)</a>
+            <p><em>This should show the full UI with console logging</em></p>
+        </div>
+
+        <h3>🛠️ Recent Improvements</h3>
+        <ul>
+            <li>✅ <strong>Console Suppression</strong>: All console.log/info/warn/error calls are silenced</li>
+            <li>✅ <strong>Early Detection</strong>: hide=true is checked before any other initialization</li>
+            <li>✅ <strong>No Web Components</strong>: Skips loading KERN UX components in hidden mode</li>
+            <li>✅ <strong>Optimized Redirect</strong>: Direct URL processing without logging overhead</li>
+            <li>✅ <strong>Silent Errors</strong>: Failures show white screen instead of error pages</li>
+        </ul>
+    </div>
+</body>
+</html>
