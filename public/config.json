@@ -60,6 +60,58 @@
                 }
             ]
         },
+{
+            "name": "EheschliessungOhneLeika",
+            "description": "Routing for Leika 99059001104000 - Anmeldung zur Eheschließung",
+            "routings": [
+                {
+                    "name": "1",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2289",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000001&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "2",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "8455",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000002&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "3",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "16935",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000003&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "4",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2352",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000004&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "5",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2500",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000005&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "6",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "7997",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "7",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2373",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000007&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "Fallback",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000001&mode=cc&cc_key=AnmeldungEheschliessung"
+                }
+            ]
+        },        
         {
             "name": "AllServices",
             "description": "Generic routing for various services based on parameters",
