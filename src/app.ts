@@ -406,6 +406,7 @@ declare global {
   interface Window {
     testRedirect: () => void;
     clearResult: () => void;
+    // eslint-disable-next-line no-unused-vars
     setTestUrl: (url: string) => void;
   }
 }
