@@ -352,20 +352,23 @@ function testRedirect(): void {
     const redirectTarget = akaService.processRedirect(testUrl);
     
     showTestResult(`
-      <strong>✅ Redirect Found!</strong><br>
-      <strong>Source:</strong> ${testUrl}<br>
-      <strong>Target:</strong> <a href="${redirectTarget}" target="_blank">${redirectTarget}</a><br>
-      <small>Click the link to test the redirect in a new tab</small>
-    `, 'success');
+      <kern-alert variant="success" heading="Redirect Found">
+      <kern-body>Source: ${testUrl}</br>
+      Target: <a href="${redirectTarget}" target="_blank">${redirectTarget}</a></br>
+      </kern-body>
+      </kern-subline>Click the link to test the redirect in a new tab.</kern-subline>
+      `, 'success');
     
     logger.info('Test redirect successful', { testUrl, redirectTarget });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';
+
     showTestResult(`
-      <strong>❌ Redirect Failed</strong><br>
-      <strong>URL:</strong> ${testUrl}<br>
-      <strong>Error:</strong> ${message}
-    `, 'error');
+      <kern-alert variant="danger" heading="Redirect Failed">
+      <kern-body>URL: ${testUrl}</br>
+      Error: ${message}</kern-body>
+      </kern-alert>
+      `, 'error');
     
     logger.warn('Test redirect failed', { testUrl, error: message });
   }

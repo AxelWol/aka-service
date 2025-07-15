@@ -22,33 +22,18 @@
                 <kern-subline>URL Shortener & Redirect Service</kern-subline>
             </kern-grid-col>
         </kern-grid-row>
+
         <kern-grid-row>
             <kern-grid-col size="8" sm="12" md="12" lg="8">
                 <div class="status" id="status">
-                    <div class="status-item">
-                        <span class="status-label">Service Status:</span>
-                        <span class="status-value" id="service-status">Loading...</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Configuration:</span>
-                        <span class="status-value" id="config-status">Loading...</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Routing Groups:</span>
-                        <span class="status-value" id="group-count">-</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Routing Entries:</span>
-                        <span class="status-value" id="routing-count">-</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Database Version:</span>
-                        <span class="status-value" id="config-version">-</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Last Modified:</span>
-                        <span class="status-value" id="config-last-modified">-</span>
-                    </div>
+                    <kern-dl>
+                        <kern-di key="Service Status:" id="service-status">Loading...</kern-di>
+                        <kern-di key="Configuration:" id="config-status">Loading...</kern-di>
+                        <kern-di key="Routing Groups:" id="group-count">Loading...</kern-di>
+                        <kern-di key="Routing Entries:" id="routing-count">Loading...</kern-di>
+                        <kern-di key="Database Version:" id="config-version">Loading...</kern-di>
+                        <kern-di key="Last Modified:" id="config-last-modified">Loading...</kern-di>
+                    </kern-dl>
                 </div>
             </kern-grid-col>
         </kern-grid-row>
@@ -98,7 +83,7 @@
                     </kern-list>
                 </div>
 
-                <div id="test-result"></div>
+                <kern-body id="test-result"></kern-body>
 
             </kern-grid-col>
         </kern-grid-row>
@@ -110,11 +95,12 @@
             <kern-grid-col size="8" sm="12" md="12" lg="8">
 
                 <div class="footer">
-                    <p>AKA URL Shortener Service. Build with KERN UX-Standard.</p>
-                    <p>© 2025 Programm digitalFirst - Senatskanzlei Hamburg.</p>
-                    <p>Info: <a href="mailto:axel.wolters@sk.hamburg.de">Axel Wolters - Themenbereich
-                            Architektur.</a></p>
-                    <p>Last Updated: <span id="last-updated">-</span></p>
+                    <kern-body size="small">AKA URL Shortener Service. Build with KERN UX-Standard.</kern-body>
+                    <kern-body size="small">© 2025 Programm digitalFirst - Senatskanzlei Hamburg.</kern-body>
+                    <kern-body size="small">Info: <a href="mailto:axel.wolters@sk.hamburg.de">Axel Wolters -
+                            Themenbereich
+                            Architektur.</a></kern-body>
+                    <kern-body size="small">Last Updated: <span id="last-updated">-</span></kern-body>
                 </div>
 
             </kern-grid-col>
