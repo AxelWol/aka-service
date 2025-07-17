@@ -48,7 +48,7 @@
     "prettier": "^3.1.0",
     "terser": "^5.43.1",
     "typescript": "5.8.3",
-    "vite": "7.0.5",
+    "vite": "^6.0.0",
     "vitest": "3.2.4"
   },
   "keywords": [
@@ -65,6 +65,7 @@
     "url": "https://github.com/AxelWol/aka-service.git"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0",
+    "npm": ">=9.0.0"
   }
 }

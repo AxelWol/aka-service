@@ -1,5 +1,16 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { createHash } from 'crypto';
+
+// Workaround for Vite 7.x crypto.hash issue
+if (!globalThis.crypto) {
+  globalThis.crypto = {
+    // @ts-ignore
+    hash: (algorithm: string, data: string) => {
+      return createHash(algorithm).update(data).digest('hex');
+    }
+  };
+}
 
 export default defineConfig({
   resolve: {
