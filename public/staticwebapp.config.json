@@ -5,6 +5,10 @@
       "allowedRoles": ["anonymous"]
     },
     {
+      "route": "/status.html",
+      "allowedRoles": ["anonymous"]
+    },
+    {
       "route": "/assets/*",
       "allowedRoles": ["anonymous"]
     },
