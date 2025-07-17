@@ -66,53 +66,8 @@ let testResultEl: HTMLElement | null = null;
  */
 async function initializeApp(): Promise<void> {
   try {
-    // Check if hide=true parameter is present first (before any logging or UI work)
-    const urlParams = new URLSearchParams(window.location.search);
-    const hideUI = urlParams.get('hide') === 'true';
-    
-    if (hideUI) {
-      // Hide UI mode - suppress all output and perform redirect immediately
-      // Override console methods to suppress all output
-       
-      const originalConsole = {
-        // eslint-disable-next-line no-console
-        log: console.log,
-        // eslint-disable-next-line no-console
-        info: console.info,
-        // eslint-disable-next-line no-console
-        warn: console.warn,
-        // eslint-disable-next-line no-console
-        error: console.error
-      };
-      
-      // Suppress all console output
-      // eslint-disable-next-line no-console
-      console.log = console.info = console.warn = console.error = () => {};
-      
-      try {
-        // Minimal white screen setup
-        document.body.innerHTML = '<div style="background: white; width: 100vw; height: 100vh;"></div>';
-        document.body.style.cssText = 'background: white; margin: 0; padding: 0; overflow: hidden;';
-        
-        // Initialize service for redirect processing (silently)
-        await akaService.initialize('/config.json');
-        
-        // Perform redirect immediately
-        handleDirectRedirectHidden();
-      } catch (error) {
-        // Restore console for critical errors only
-        Object.assign(console, originalConsole);
-        // eslint-disable-next-line no-console
-        console.error('Critical error in hidden mode:', error);
-        
-        // Show minimal white screen on error
-        document.body.innerHTML = '<div style="background: white; width: 100vw; height: 100vh;"></div>';
-      }
-      return;
-    }
-    
-    // Normal mode initialization
-    logger.info('Initializing AKA Service application');
+    // Normal mode initialization - UI for status page
+    logger.info('Initializing AKA Service status application');
     
     // Load web components first
     await loadWebComponents();
@@ -134,13 +89,10 @@ async function initializeApp(): Promise<void> {
     // Update UI with service status
     updateServiceStatus();
     
-    // Set up URL handling for direct redirects
-    handleDirectRedirect();
-    
-    logger.info('Application initialized successfully');
+    logger.info('Status application initialized successfully');
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';
-    logger.error('Failed to initialize application', { error: message });
+    logger.error('Failed to initialize status application', { error: message });
     updateStatusError('Failed to initialize service: ' + message);
   }
 }
@@ -208,127 +160,6 @@ function updateStatusError(message: string): void {
     configStatusEl.textContent = message;
     configStatusEl.style.color = '#dc3545';
   }
-}
-
-/**
- * Handle direct redirect for incoming URLs
- */
-function handleDirectRedirect(): void {
-  // Check if this is a redirect request (not the main page)
-  const currentPath = window.location.pathname;
-  const currentSearch = window.location.search;
-  
-  // Skip redirect for root path and admin paths
-  if (currentPath === '/' || currentPath === '/index.html' || currentPath.startsWith('/admin')) {
-    return;
-  }
-  
-  try {
-    logger.info('Processing direct redirect request', { 
-      path: currentPath, 
-      search: currentSearch 
-    });
-    
-    const fullUrl = currentPath + currentSearch;
-    const redirectTarget = akaService.processRedirect(fullUrl);
-    
-    logger.info('Redirecting to target URL', { 
-      sourceUrl: fullUrl, 
-      targetUrl: redirectTarget 
-    });
-    
-    // Perform the redirect
-    window.location.href = redirectTarget;
-  } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    logger.error('Direct redirect failed', { 
-      error: message, 
-      path: currentPath, 
-      search: currentSearch 
-    });
-    
-    // Show error page or redirect to home
-    showRedirectError(message);
-  }
-}
-
-/**
- * Handle direct redirect for hidden UI mode
- */
-function handleDirectRedirectHidden(): void {
-  // Get current URL without the hide parameter
-  const currentPath = window.location.pathname;
-  const currentSearch = window.location.search;
-  
-  try {
-    // Remove hide parameter from the URL for processing
-    const urlParams = new URLSearchParams(currentSearch);
-    urlParams.delete('hide');
-    const cleanSearch = urlParams.toString();
-    const cleanUrl = currentPath + (cleanSearch ? '?' + cleanSearch : '');
-    
-    // For root path, only redirect if there are other parameters
-    if (currentPath === '/' || currentPath === '/index.html') {
-      if (cleanSearch) {
-        // If there are parameters, try to find a matching route
-        const redirectTarget = akaService.processRedirect('/?' + cleanSearch);
-        window.location.href = redirectTarget;
-      }
-      // If no parameters, stay on white screen (no redirect needed)
-      return;
-    }
-    
-    // Process redirect for non-root paths
-    const redirectTarget = akaService.processRedirect(cleanUrl);
-    window.location.href = redirectTarget;
-  } catch (error) {
-    // In hidden mode, silently fail and show white screen
-    // No error logging or UI in hidden mode
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    logger.error('Direct redirect failed', { 
-      error: message, 
-      path: currentPath, 
-      search: currentSearch
-    });
-  }
-}
-
-/**
- * Show redirect error
- */
-function showRedirectError(message: string): void {
-  document.body.innerHTML = `
-    <div style="
-      font-family: 'Segoe UI', sans-serif;
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 2rem;
-      text-align: center;
-      background: #f8f9fa;
-      border-radius: 10px;
-      border-left: 4px solid #dc3545;
-    ">
-      <h1 style="color: #dc3545; margin-bottom: 1rem;">Redirect Error</h1>
-      <p style="color: #666; margin-bottom: 1rem;">The requested URL could not be redirected:</p>
-      <p style="
-        background: #fff;
-        padding: 1rem;
-        border-radius: 5px;
-        font-family: monospace;
-        color: #dc3545;
-        border: 1px solid #f5c6cb;
-      ">${message}</p>
-      <button onclick="window.location.href='/'" style="
-        background: #007bff;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 1rem;
-      ">Go to Home Page</button>
-    </div>
-  `;
 }
 
 /**
@@ -421,6 +252,3 @@ window.setTestUrl = setTestUrl;
 
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeApp);
-
-// Handle browser back/forward navigation
-window.addEventListener('popstate', handleDirectRedirect);

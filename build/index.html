@@ -1,121 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKA URL Shortener Service</title>
-  <script type="module" crossorigin src="/assets/index-CnZz360m.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CvZ2VSyk.css">
+    <title>AKA Service - Redirecting...</title>
+    <style>
+        body {
+            background: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/main-DNj5Sx-5.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-C5_8aL5H.js">
 </head>
-
-<body data-kern-theme="light">
-
-    <kern-grid-container>
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-                <kern-heading level="1" size="large">AKA Service</kern-heading>
-                <kern-subline>URL Shortener & Redirect Service</kern-subline>
-            </kern-grid-col>
-        </kern-grid-row>
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-                <div class="status" id="status">
-                    <div class="status-item">
-                        <span class="status-label">Service Status:</span>
-                        <span class="status-value" id="service-status">Loading...</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Configuration:</span>
-                        <span class="status-value" id="config-status">Loading...</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Routing Groups:</span>
-                        <span class="status-value" id="group-count">-</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Routing(s):</span>
-                        <span class="status-value" id="routing-count">-</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Version:</span>
-                        <span class="status-value" id="config-version">-</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Last Modified:</span>
-                        <span class="status-value" id="config-last-modified">-</span>
-                    </div>
-                </div>
-            </kern-grid-col>
-        </kern-grid-row>
-
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-                <kern-heading level="2" size="medium">Test URL Redirection</kern-heading>
-
-                <kern-fieldset>
-                    <kern-input type="text" label="Enter URL to test:" id="test-url" required
-                        placeholder="e.g., /Eheschliessung?oeid=2289&leika=99059001104000"></kern-input>
-                </kern-fieldset>
-
-                <br />
-
-                <kern-button variant="primary" onclick="testRedirect()">Test Redirect</kern-button>&nbsp;&nbsp;
-                <kern-button variant="secondary" onclick="clearResult()">Clear</kern-button>
-
-            </kern-grid-col>
-        </kern-grid-row>
-
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-
-
-                <div class="examples">
-                    <kern-heading level="3" size="small">Example URLs (click to test, hide=true hides this UI in
-                        PROD):</kern-heading>
-                    <br />
-                    <kern-list variant="simple" type="bullet" size="default">
-                        <kern-list-item
-                            onclick="setTestUrl('/Eheschliessung?leika=99059001104000&oeid=2289&hide=true')">
-                            /Eheschliessung?leika=99059001104000&oeid=2289&hide=true
-                        </kern-list-item>
-                        <kern-list-item onclick="setTestUrl('/Eheschliessung?leika=99059001104000&hide=true')">
-                            /Eheschliessung?leika=99059001104000&hide=true
-                        </kern-list-item>
-                        <kern-list-item onclick="setTestUrl('/AllServices?leika=99059001104000&oeid=2289&hide=true')">
-                            /AllServices?leika=99059001104000&oeid=2289&hide=true
-                        </kern-list-item>
-                        <kern-list-item onclick="setTestUrl('/SimpleRedirect?hide=true')">
-                            /SimpleRedirect?hide=true
-                        </kern-list-item>
-                    </kern-list>
-                </div>
-
-                <div id="test-result"></div>
-
-            </kern-grid-col>
-        </kern-grid-row>
-
-        </kern-grid-col>
-        </kern-grid-row>
-
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-
-                <div class="footer">
-                    <p>AKA URL Shortener Service. Build with KERN UX-Standard.</p>
-                    <p>© 2025 Programm digitalFirst - Senatskanzlei Hamburg.</p>
-                    <p>Info: <a href="mailto:axel.wolters@sk.hamburg.de">Axel Wolters - Themenbereich
-                            Architektur.</a></p>
-                    <p>Last Updated: <span id="last-updated">-</span></p>
-                </div>
-
-            </kern-grid-col>
-        </kern-grid-row>
-
-
-    </kern-grid-container>
-
+<body>
 </body>
-
 </html>

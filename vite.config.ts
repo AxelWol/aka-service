@@ -14,6 +14,10 @@ export default defineConfig({
     minify: 'terser',
     sourcemap: true,
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        status: resolve(__dirname, 'status.html'),
+      },
       external: [],
       output: {
         // Ensure web components are properly bundled

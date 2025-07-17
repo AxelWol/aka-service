@@ -1,115 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKA URL Shortener Service</title>
-    <!-- Fira Sans Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
+    <title>AKA Service - Redirecting...</title>
+    <style>
+        body {
+            background: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
-
 <body data-kern-theme="light">
-
-    <kern-grid-container>
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-                <kern-heading level="1" size="large">AKA Service</kern-heading>
-                <kern-subline>URL Shortener & Redirect Service</kern-subline>
-            </kern-grid-col>
-        </kern-grid-row>
-
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-                <div class="status" id="status">
-                    <kern-dl>
-                        <kern-di key="Service Status:" id="service-status">Loading...</kern-di>
-                        <kern-di key="Configuration:" id="config-status">Loading...</kern-di>
-                        <kern-di key="Routing Groups:" id="group-count">Loading...</kern-di>
-                        <kern-di key="Routing Entries:" id="routing-count">Loading...</kern-di>
-                        <kern-di key="Database Version:" id="config-version">Loading...</kern-di>
-                        <kern-di key="Last Modified:" id="config-last-modified">Loading...</kern-di>
-                    </kern-dl>
-                </div>
-            </kern-grid-col>
-        </kern-grid-row>
-
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-                <kern-heading level="2" size="medium">Test URL Redirection</kern-heading>
-
-                <kern-fieldset>
-                    <kern-input type="text" label="Enter URL to test:" id="test-url" required
-                        placeholder="e.g., /Eheschliessung?oeid=2289&leika=99059001104000"></kern-input>
-                </kern-fieldset>
-
-                <br />
-
-                <kern-button variant="primary" onclick="testRedirect()">Test Redirect</kern-button>&nbsp;&nbsp;
-                <kern-button variant="secondary" onclick="clearResult()">Clear</kern-button>
-
-            </kern-grid-col>
-        </kern-grid-row>
-
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-
-
-                <div class="examples">
-                    <kern-heading level="3" size="small">Example URLs (click to test, hide=true hides this UI in
-                        PROD):</kern-heading>
-                    <br />
-                    <kern-list variant="simple" type="bullet" size="default">
-                        <kern-list-item
-                            onclick="setTestUrl('/Eheschliessung?leika=99059001104000&oeid=2289&hide=true')">
-                            /Eheschliessung?leika=99059001104000&oeid=2289&hide=true
-                        </kern-list-item>
-                        <kern-list-item onclick="setTestUrl('/EheschliessungOhneLeika?oeid=2289&hide=true')">
-                            /EheschliessungOhneLeika?oeid=2289&hide=true
-                        </kern-list-item>
-                        <kern-list-item onclick="setTestUrl('/Eheschliessung?leika=99059001104000&hide=true')">
-                            /Eheschliessung?leika=99059001104000&hide=true
-                        </kern-list-item>
-                        <kern-list-item onclick="setTestUrl('/AllServices?leika=99059001104000&oeid=2289&hide=true')">
-                            /AllServices?leika=99059001104000&oeid=2289&hide=true
-                        </kern-list-item>
-                        <kern-list-item onclick="setTestUrl('/SimpleRedirect?hide=true')">
-                            /SimpleRedirect?hide=true
-                        </kern-list-item>
-                    </kern-list>
-                </div>
-
-                <kern-body id="test-result"></kern-body>
-
-            </kern-grid-col>
-        </kern-grid-row>
-
-        </kern-grid-col>
-        </kern-grid-row>
-
-        <kern-grid-row>
-            <kern-grid-col size="8" sm="12" md="12" lg="8">
-
-                <div class="footer">
-                    <kern-body size="small">AKA URL Shortener Service. Build with KERN UX-Standard.</kern-body>
-                    <kern-body size="small">© 2025 Programm digitalFirst - Senatskanzlei Hamburg.</kern-body>
-                    <kern-body size="small">Info: <a href="mailto:axel.wolters@sk.hamburg.de">Axel Wolters -
-                            Themenbereich
-                            Architektur.</a></kern-body>
-                    <kern-body size="small">Last Updated: <span id="last-updated">-</span></kern-body>
-                </div>
-
-            </kern-grid-col>
-        </kern-grid-row>
-
-
-    </kern-grid-container>
-
-    <script type="module" src="/src/app.ts"></script>
+    <script type="module" src="/src/redirect.ts"></script>
 </body>
-
 </html>
