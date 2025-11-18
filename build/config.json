@@ -1,11 +1,65 @@
 {
-    "version": "1.1.8",
+    "version": "1.2.1",
     "metadata": {
         "created": "2025-07-12T10:00:00.000Z",
-        "lastModified": "2025-10-09T10:00:00.000Z",
+        "lastModified": "2025-11-18T14:00:00.000Z",
         "author": "AKA Service Team"
     },
     "routingGroups": [
+        {
+            "name": "Sterbefallbeurkundungen",
+            "description": "Routing for Leika 99101011261000 - Sterbefallbeurkundungen",
+            "dependsOnKey": "leika",
+            "dependsOnValue": "99101011261000",
+            "routings": [
+                {
+                    "name": "1",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2290",
+                    "redirectTarget": "https://efa.hh.niedersachsen.de/govos/go/a/76?c=bc"
+                },
+                {
+                    "name": "2",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2373",
+                    "redirectTarget": "https://efa.hh.niedersachsen.de/govos/go/a/57?c=bc"
+                },
+                {
+                    "name": "3",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "7996",
+                    "redirectTarget": "https://efa.hh.niedersachsen.de/govos/go/a/77?c=bc"
+                },
+                {
+                    "name": "4",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "13066",
+                    "redirectTarget": "https://efa.hh.niedersachsen.de/govos/go/a/78?c=bc"
+                },
+                {
+                    "name": "5",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "22609",
+                    "redirectTarget": "https://efa.hh.niedersachsen.de/govos/go/a/79?c=bc"
+                },
+                {
+                    "name": "6",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "8456",
+                    "redirectTarget": "https://efa.hh.niedersachsen.de/govos/go/a/81?c=bc"
+                },
+                {
+                    "name": "7",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "2501",
+                    "redirectTarget": "https://efa.hh.niedersachsen.de/govos/go/a/80?c=bc"
+                },
+                {
+                    "name": "Fallback",
+                    "redirectTarget": ""
+                }
+            ]
+        },
         {
             "name": "Eheschliessung",
             "description": "Routing for Leika 99059001104000 - Anmeldung zur Eheschließung",
