@@ -1,6 +1,6 @@
 {
   "name": "aka-service",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "AKA-URL Shortener Service - A static web app for URL redirection",
   "type": "module",
   "scripts": {
@@ -65,7 +65,7 @@
     "url": "https://github.com/AxelWol/aka-service.git"
   },
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=22.0.0",
     "npm": ">=9.0.0"
   }
 }
