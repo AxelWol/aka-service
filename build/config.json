@@ -1,8 +1,8 @@
 {
-    "version": "1.2.2",
+    "version": "1.2.4",
     "metadata": {
         "created": "2025-07-12T10:00:00.000Z",
-        "lastModified": "2025-11-18T14:31:00.000Z",
+        "lastModified": "2025-12-17T11:38:00.000Z",
         "author": "AKA Service Team"
     },
     "routingGroups": [
@@ -151,9 +151,15 @@
                     "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000005&mode=cc&cc_key=AnmeldungEheschliessung"
                 },
                 {
-                    "name": "6",
+                    "name": "Bergedorf-1",
                     "dependsOnKey": "oeid",
                     "dependsOnValue": "7997",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "Bergedorf-2",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "7996",
                     "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=AnmeldungEheschliessung"
                 },
                 {
@@ -205,11 +211,18 @@
                     "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000005&mode=cc&cc_key=Ehefaehigkeitszeugnis"
                 },
                 {
-                    "name": "6",
+                    "name": "Bergedorf-1",
                     "dependsOnKey": "oeid",
                     "dependsOnValue": "7997",
                     "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=Ehefaehigkeitszeugnis"
                 },
+                {
+                    "name": "Bergedorf-2",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "7996",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=Ehefaehigkeitszeugnis"
+                },
+
                 {
                     "name": "7",
                     "dependsOnKey": "oeid",
@@ -257,9 +270,15 @@
                     "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000005&mode=cc&cc_key=AnmeldungEheschliessung"
                 },
                 {
-                    "name": "6",
+                    "name": "Bergedorf-1",
                     "dependsOnKey": "oeid",
                     "dependsOnValue": "7997",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=AnmeldungEheschliessung"
+                },
+                {
+                    "name": "Bergedorf-2",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "7996",
                     "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=AnmeldungEheschliessung"
                 },
                 {
@@ -309,9 +328,15 @@
                     "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000005&mode=cc&cc_key=Ehefaehigkeitszeugnis"
                 },
                 {
-                    "name": "6",
+                    "name": "Bergedorf-1",
                     "dependsOnKey": "oeid",
                     "dependsOnValue": "7997",
+                    "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=Ehefaehigkeitszeugnis"
+                },
+                {
+                    "name": "Bergedorf-2",
+                    "dependsOnKey": "oeid",
+                    "dependsOnValue": "7996",
                     "redirectTarget": "https://portal-civ-efa.ekom21.de/civ-efa-sta.public/start.html?oe=00.00.EHE.02000006&mode=cc&cc_key=Ehefaehigkeitszeugnis"
                 },
                 {
